@@ -15,7 +15,14 @@ Lulu ChatApp is a messaging platform. It provides a reliable way for users to se
 🟩 ability to logout 
 
 
+🔴 Features need to add :
+🟩 last received/sent message of users list
+🟩 online/offline icon 
+
+
 ![image](https://github.com/Lu99xo/LuluChatApp/assets/77988610/09c79648-02dd-470c-8c95-9b4aa3ebf862)
 ![image](https://github.com/Lu99xo/LuluChatApp/assets/77988610/e9968d1d-63c9-4d6e-97e3-0be9db655d4e)
 ![image](https://github.com/Lu99xo/LuluChatApp/assets/77988610/9e171643-51ce-40b1-ae6e-d69de1fad3de)
 ![image](https://github.com/Lu99xo/LuluChatApp/assets/77988610/97016094-b5b3-4e07-a95e-76f203338844)
+
+https://www.youtube.com/watch?v=__2l778hN5s
