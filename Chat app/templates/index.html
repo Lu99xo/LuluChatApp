@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">    <title>Chat Application</title>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="form signup">
+            <header>Lulu Chat App</header>
+            <form action="/submit" method="post"  id="registrationForm" >
+                <div class="error-txt"> {{errormsg}}</div>
+
+                    <div class="field input ">
+                        <label>username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+
+                    <div class="field input ">
+                        <label>Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="field input ">
+                        <label>password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="field image ">
+                        <label>Avatar</label>
+                        <input type="file"  id="avatar" name="avatar" required>
+                    </div>
+                    <div class="field input button ">
+                        <input type="submit" value="continue to chat ">
+                    </div>
+            </form>
+            <div class="link">already signed up? <a href="{{ url_for('form') }}">login now</a></div>
+        </section>
+    </div>
+    <script src="./javascript/signup.js"></script>
+</body>
+</html>

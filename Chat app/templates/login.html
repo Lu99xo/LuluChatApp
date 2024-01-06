@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css"> 
+    <title>Chat Application</title>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="form signup">
+            <header>Lulu Chat</header>
+            <form action="/login" method="post">
+                <div class="error-txt" id="errorMsg">{{ msg }}</div>
+                    <div class="field input ">
+                        <label>Username</label>
+                        <input type="username" placeholder="username" name="username" required >
+                    </div>
+                    <div class="field input ">
+                        <label>password</label>
+                        <input type="password" placeholder="password" name="password" required>
+                    </div>
+                    <div class="field input button ">
+                        <input type="submit" value="Login">
+                    </div>
+            </form>
+            <div class="link">you don't have account? <a href="{{ url_for('signup') }}">sign up</a></div>
+        </section>
+    </div>
+<script>
+
+        // get error txt 
+        var errorMsg =  document.getElementById("errorMsg");
+        
+        // if empty
+        if (errorMsg.innerHTML.trim() === ""){
+            
+            errorMsg.style.display = "none";
+        }else {
+            errorMsg.style.display = "block";
+
+        }
+</script>
+</body>
+</html>

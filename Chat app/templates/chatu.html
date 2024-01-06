@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">    <title>Chat Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>users</title>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="chat-area">
+
+            <header>
+                <a href="{{ url_for('usersp') }}" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+                <img src="/static/img/{{avatar}}"> 
+                <div class="details">
+                    <span> {{user}} </span>
+                    <span> {{uID}} </span>
+                    <p>Active now</p>
+                </div>
+            </header>
+
+            <div class="chat-box" id="chatbox" >
+                {% for msg in inMsg %}
+                <div  class="chat incoming">
+                    <div class="details">
+                        {% if msg[1] ==outMsgID  %}
+                        <p id="incoming">{{ msg[2] }} </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div  class="chat outgoing">
+                    <div class="details">
+                        {% if msg[1] == inMsgID   %}
+                        <p id="outgoing">{{ msg[2] }} </p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <form class="typing-area" action="" method="post">
+                <input type="txtmsg" placeholder="type a message"  name="txtmsg" required >
+                <button type="submit" value="" id="myButton" ><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+
+        </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function appendStoredDivs() {
+            $.get('/load_msgs', function(data) {
+                $.each(data.outgoing, function(index, value) {
+                    $('#chatbox').append(value);
+                });
+            });
+        }
+    
+        // Call the function to append the stored divs when the page loads
+        $(document).ready(function() {
+            appendStoredDivs();
+        });
+    
+        $("#myButton").click(function(e) {
+            e.preventDefault(); // prevent form from submitting
+            $.ajax({
+                type: "POST",
+                url: "/click",
+                data: {
+                    txtmsg: $('input[name="txtmsg"]').val()
+                },
+                success: function(data) {
+                    // alert(data);
+                    $('input[name="txtmsg"]').val(''); // set input value to an empty string
+    
+                    // Loop to create multiple new div elements
+                    for (var i = 0; i < 1; i++) { // Change the number 3 to the number of new div elements you want to create
+                        // Create a new div element with class outgoing
+                        var newDiv = $('<div class="chat outgoing"><div class="details"><p id="outgoing">' + data + '</p></div></div>');
+    
+                        // Append the new div to the container div
+                        $("#chatbox").append(newDiv);
+                    }
+                }
+            });
+        });
+    
+
+    </script>
+ 
+</body>
+</html>
